@@ -1,23 +1,42 @@
-import './TodoEditor.css';
-import { useState } from 'react';
+import { useState, useRef } from "react";
+import "./TodoEditor.css";
 
-const TodoEditor = ({onCreate}) =>{
-    const [content, setConent] = useState("");
-    const onChageCntent = (e) =>{
-        setConent(e.target.value);
-    } 
-    return(
-        <div className="TodoEditor">
-            <h4>새로운 Todo 작성하기</h4>
-            <div className="editor_wrapper">
-                <input 
-                value={content}
-                onChange={onChageCntent}
-                placeholder="새로운 리스트"/>
-                 <button>추가</button>
-            </div>
-        </div>
-    )
-}
+const TodoEditor = ({ onCreate }) => {
+  const [content, setContent] = useState("");
+  const inputRef = useRef();
 
+  const onChangeContent = (e) => {
+    setContent(e.target.value);
+  };
+  const onSubmit = () => {
+    if (!content) {
+      inputRef.current.focus();
+      return;
+    }
+    onCreate(content);
+    setContent("");
+  };
+  const onKeyDown = (e) => {
+    if (e.keyCode === 13) {
+      // e.key === 'Enter'
+      onSubmit();
+    }
+  };
+
+  return (
+    <div className="TodoEditor">
+      <h4>새로운 Todo 작성하기 </h4>
+      <div className="editor_wrapper">
+        <input
+          ref={inputRef}
+          value={content}
+          onChange={onChangeContent}
+          onKeyDown={onKeyDown}
+          placeholder="새로운 Todo..."
+        />
+        <button onClick={onSubmit}>추가</button>
+      </div>
+    </div>
+  );
+};
 export default TodoEditor;
