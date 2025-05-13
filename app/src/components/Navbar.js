@@ -1,14 +1,20 @@
-import { Link } from 'react-router-dom';
+import {Link} from 'react-router-dom';
 
-function Navbar() {
-  return (
-    <nav style={{ padding: '1rem', background: '#ddd' }}>
-      <Link to="/">Home</Link> |{' '}
-      <Link to="/products">Products</Link> |{' '}
-      <Link to="/cart">Cart</Link> |{' '}
-      <Link to="/contact">Contact</Link>
-    </nav>
-  );
+function Navbar(){
+    return(
+        <nav>
+            <ul>
+                <li><a href="#">HOME</a></li>
+                <li><a href="#">ABOUT</a></li>
+                <li><a href="#">CONTACT</a></li>
+            </ul>
+            <ul>
+                <li><Link to="/">HOME</Link></li>
+                <li><Link to="/About">ABOUT</Link></li>
+                <li><Link to="/Contact">CONTACT</Link></li>
+            </ul>
+        </nav>
+    )
 }
 
 export default Navbar;
