@@ -5,6 +5,10 @@ import TodoEditor from "./component/TodoEditor";
 import TodoList from "./component/TodoList";
 import { useState ,useRef } from 'react';
 
+
+import TestComp from "./component/TestComp";
+
+
 const mockTodo = [
   {
     id: 0,
@@ -44,7 +48,8 @@ function App(){
   };
   // todo 저장하는 공간 
   return(
-    <div className="App">   
+    <div className="App">
+        <TestComp />   
         <Header />
         <TodoEditor onCreate={onCreate}/>
         <TodoList todo={todo} onDelete={onDelete} />
