@@ -1,13 +1,16 @@
 import React from "react";
-import { useNavigate } from "react-router-dom"; 
+import { Link } from "react-router-dom";
+// import { useNavigate } from "react-router-dom"; 
 
 const Home: React.FC = () =>{
-    const navigate = useNavigate();
+   // const navigate = useNavigate();
 
     return(
         <div>
             <h1>HOME입니다😘</h1>
-            <button onClick={() => navigate('/About')}>About으로 이동</button>
+            <Link to="/About">
+            <button>About으로 이동</button>
+            </Link>
         </div>
     )
 }
