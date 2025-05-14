@@ -1,8 +1,7 @@
 import React from 'react';
 
 interface WelcomeMessageProps{
-    name : string; // name은 String 타입로 전달
-
+    name : number; // 2 name은 String 
 }
 
 const WelcomeMessage:React.FC<WelcomeMessageProps> = ({name}) => {
