@@ -4,6 +4,9 @@ import "./TodoList.css";
 
 const TodoList = ({ todo, onUpdate, onDelete }) => {
   const [search, setSearch] = useState("");
+  const totalCount = todo.length;
+  console.log(`전체개수 : ${totalCount}`);
+
   const onChangeSearch = (e) => {
     setSearch(e.target.value);
   };
@@ -16,27 +19,26 @@ const TodoList = ({ todo, onUpdate, onDelete }) => {
         );
   };
 
-
-    return (
-        <div className="TodoList">
-          <h4>Todo List 🌱</h4>
-          <input
-            value={search}
-            onChange={onChangeSearch}
-            className="searchbar"
-            placeholder="검색어를 입력하세요"
+  return (
+    <div className="TodoList">
+      <h4>Todo List 🌱</h4>
+      <input
+        value={search}
+        onChange={onChangeSearch}
+        className="searchbar"
+        placeholder="검색어를 입력하세요"
+      />
+      <div className="list_wrapper">
+        {getSearchResult().map((it) => (
+          <TodoItem
+            key={it.id}
+            {...it}
+            onUpdate={onUpdate}
+            onDelete={onDelete}
           />
-          <div className="list_wrapper">
-            {getSearchResult().map((it) => (
-              <TodoItem
-                key={it.id}
-                {...it}
-                onUpdate={onUpdate}
-                onDelete={onDelete}
-              />
-            ))}
-          </div>
-        </div>
-      );
-    };
-    export default TodoList;
+        ))}
+      </div>
+    </div>
+  );
+};
+export default TodoList;
