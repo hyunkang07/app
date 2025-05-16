@@ -5,6 +5,6 @@ import './index.css'; // 기본 스타일
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <App /> {/* App 전체를 렌더링 */}
+    <App />
   </React.StrictMode>
 );
