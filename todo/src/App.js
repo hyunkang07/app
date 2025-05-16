@@ -1,14 +1,9 @@
-
+// import { useState } from "react";
 import "./App.css";
 import Header from "./component/Header";
 import TodoEditor from "./component/TodoEditor";
 import TodoList from "./component/TodoList";
-import { useState ,useRef } from 'react';
-
-
-import TestComp from "./component/TestComp";
-
-
+import { useState, useRef } from "react";
 const mockTodo = [
   {
     id: 0,
@@ -28,16 +23,16 @@ const mockTodo = [
     content: "노래 연습하기",
     createdDate: new Date().getTime(),
   },
-];
-
-function App(){
+]
+function App() {
   const idRef = useRef(3);
-  const [todo,setTodo] = useState(mockTodo);
-  const onCreate = (content) =>{
+  // 아이템이 3개 들어가서 3으로 저장.
+  const [todo, setTodo] = useState(mockTodo);
+  const onCreate = (content) => {
     let newItem = {
       id: idRef.current,
       content,
-      isDone:false,
+      isDone: false,
       createDate: new Date().getTime(),
     }
     setTodo([newItem, ...todo]);
@@ -45,16 +40,19 @@ function App(){
   }
   const onDelete = (targetId) => {
     setTodo(todo.filter((it) => it.id !== targetId));
+  }
+  const onUpdate = (targetId) => {
+    setTodo(
+      todo.map((it) =>
+        it.id === targetId ? { ...it, isDone: !it.isDone } : it)
+    );
   };
-  // todo 저장하는 공간 
-  return(
+  return (
     <div className="App">
-        <TestComp />   
-        <Header />
-        <TodoEditor onCreate={onCreate}/>
-        <TodoList todo={todo} onDelete={onDelete} />
+      <Header></Header>
+      <TodoEditor onCreate={onCreate}></TodoEditor>
+      <TodoList todo={todo} onUpdate={onUpdate} onDelete={onDelete}></TodoList>
     </div>
-  )
+  );
 }
-
 export default App;
