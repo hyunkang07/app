@@ -1,15 +1,21 @@
-import { useContext } from "react";
-import ThemeContext from "./ThemeContext";
+import { useContext } from 'react';
+import AuthContext from './AuthContext';
 
-function Header(){
-    const {theme, toggleTheme} = useContext(ThemeContext);
+function Header() {
+  const { user, logout } = useContext(AuthContext);  // 가방에서 꺼내기
 
-    return(
-        <header>
-            <p>현재 테마 {theme}</p>
-            <button onClick={toggleTheme}>테마 전환</button>
-        </header>
-    )
+  return (
+    <header>
+      {user ? (  
+        <>
+          <p>환영합니다, {user.name}님!</p>  
+          <button onClick={logout}>로그아웃</button>  
+        </>
+      ) : (
+        <p>로그인되지 않았습니다.</p>
+      )}
+    </header>
+  );
 }
 
 export default Header;
