@@ -18,14 +18,13 @@ const TodoEditor = ({ onCreate }) => {
   };
   const onKeyDown = (e) => {
     if (e.keyCode === 13) {
-      // e.key === 'Enter'
       onSubmit();
     }
   };
 
   return (
     <div className="TodoEditor">
-      <h4>새로운 Todo 작성하기 </h4>
+      <h4>새로운 Todo 작성하기 ✏ </h4>
       <div className="editor_wrapper">
         <input
           ref={inputRef}
