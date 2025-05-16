@@ -2,22 +2,15 @@ import { useState } from "react";
 import TodoItem from "./TodoItem";
 import "./TodoList.css";
 
-// todolist 에 컴포넌트를 여러개 만드는 방법
 const TodoList = ({ todo, onUpdate, onDelete }) => {
   const [search, setSearch] = useState("");
-  // 검색창에 입력한 값을 저장하는 상태(문자열 "")
-  const totalCount = todo.length;
-  console.log(`전체개수 : ${totalCount}`);
-
   const onChangeSearch = (e) => {
-    // 검색창에 입력하면 실행 되는 함수 
     setSearch(e.target.value);
-    // 사용자 input에 입력한 텍스트를 search 상태를 가져옴(저장)
   };
 
   const getSearchResult = () => {
     return search === ""
-      ? todo // 검색어가 없으면! 전체 목록을 보여주고
+      ? todo
       : todo.filter((it) =>
           it.content.toLowerCase().includes(search.toLowerCase())
         );
