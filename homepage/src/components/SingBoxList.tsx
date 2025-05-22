@@ -9,10 +9,17 @@ const BoxContainer = styled.div`
 `;
 
 const data = [
-    {title: '박스1'},
-    {title: '박스2'},
-    {title: '박스3'},
-    {title: '박스4'},
+    {
+    title: '박스1',
+    price: '20000',
+    imgContent: 'https://blog.kakaocdn.net/dn/cF4JJT/btsJQXMHN9Q/OAMpeHgbnkmT7k1CkxgEfk/img.png'
+},
+    {title: '박스2',price: '20000',
+    imgContent: 'https://blog.kakaocdn.net/dn/cF4JJT/btsJQXMHN9Q/OAMpeHgbnkmT7k1CkxgEfk/img.png'},
+    {title: '박스3',price: '20000',
+    imgContent: 'https://blog.kakaocdn.net/dn/cF4JJT/btsJQXMHN9Q/OAMpeHgbnkmT7k1CkxgEfk/img.png'},
+    {title: '박스4',price: '20000',
+    imgContent: 'https://blog.kakaocdn.net/dn/cF4JJT/btsJQXMHN9Q/OAMpeHgbnkmT7k1CkxgEfk/img.png'},
 ]
 
 function SingBoxList(){
@@ -20,7 +27,7 @@ function SingBoxList(){
         <BoxContainer>
             {
                 data.map((item,idx)=>(
-                    <SingBox key={idx} title={item.title}/>
+                    <SingBox key={idx} title={item.title} price={item.price} imgContent={item.imgContent} />
                 ))
             }
         </BoxContainer>
